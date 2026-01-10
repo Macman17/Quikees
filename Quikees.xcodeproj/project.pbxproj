@@ -16,6 +16,11 @@
 			path = Quikees;
 			sourceTree = "<group>";
 		};
+		C50C03022F1095C2004B9F41 /* Practice */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Practice;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +37,7 @@
 		C50C02E72F0E0420004B9F41 = {
 			isa = PBXGroup;
 			children = (
+				C50C03022F1095C2004B9F41 /* Practice */,
 				C50C02F22F0E0420004B9F41 /* Quikees */,
 				C50C02F12F0E0420004B9F41 /* Products */,
 			);
@@ -62,6 +68,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				C50C02F22F0E0420004B9F41 /* Quikees */,
+				C50C03022F1095C2004B9F41 /* Practice */,
 			);
 			name = Quikees;
 			packageProductDependencies = (
