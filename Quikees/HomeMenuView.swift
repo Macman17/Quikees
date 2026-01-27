@@ -9,7 +9,19 @@ import SwiftUI
 
 struct HomeMenuView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            List{
+                NavigationLink("Menu"){
+                    MenuView()
+                }
+                NavigationLink("Reservation form"){
+                    ReservationForm()
+                }
+                NavigationLink("Customer Profiles"){
+                    CustomerView()
+                }
+            }
+        }
     }
 }
 

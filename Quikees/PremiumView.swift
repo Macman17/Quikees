@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct PremiumView: View {
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            Image(systemName: "star.fill")
+                .foregroundColor(.yellow)
+            Text("Premium")
+                .font(.caption)
+        }
+        .padding(8)
+        .background(Color.orange.opacity(0.15))
+        .cornerRadius(6)
     }
 }
 

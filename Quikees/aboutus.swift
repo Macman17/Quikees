@@ -19,6 +19,8 @@ struct aboutus: View {
                 .font(.title2)
                 .padding()
             Text("Quikees is a family resturant in the heart of the city. We serve up delicious food and a great selection of drinks. We hope to see you soon!")
+            
+           
         }
         .padding()
     }

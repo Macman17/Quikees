@@ -16,6 +16,11 @@
 			path = "103project-Cort6";
 			sourceTree = "<group>";
 		};
+		C591D6E12F253D7E004A96B0 /* playground */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = playground;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +37,7 @@
 		C591D6CA2F253C26004A96B0 = {
 			isa = PBXGroup;
 			children = (
+				C591D6E12F253D7E004A96B0 /* playground */,
 				C591D6D52F253C27004A96B0 /* 103project-Cort6 */,
 				C591D6D42F253C27004A96B0 /* Products */,
 			);
@@ -62,6 +68,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				C591D6D52F253C27004A96B0 /* 103project-Cort6 */,
+				C591D6E12F253D7E004A96B0 /* playground */,
 			);
 			name = "103project-Cort6";
 			packageProductDependencies = (

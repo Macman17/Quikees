@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct MenuItemRowView: View {
+    let name: String
+    let price: Double
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            
+            Text(name)
+                .font(.headline)
+            Spacer()
+            Text("$\(price, specifier: "%.2f")")
+                .foregroundColor(.secondary)
+            
+            if price > 10 {
+                PremiumView()
+            }
+        }
     }
 }
 
-#Preview {
-    MenuItemRowView()
-}
+//#Preview {
+ //   MenuItemRowView()
+//}

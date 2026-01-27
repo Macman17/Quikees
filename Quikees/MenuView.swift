@@ -17,6 +17,8 @@ struct MenuView: View {
     @State private var showDessert = false
     @State private var isExpand = false
     
+    @State private var showPremium = false
+    
     
     let options: [String] = ["Option 1", "Option 2", "Option 3"]
     let menu: [String: Double] = [
@@ -42,10 +44,26 @@ struct MenuView: View {
     var displayMenu: [(name: String, price: Double)] {
         if showAffordableItems {
             return sortedMenu.filter { $0.price < 10}
-        }else {
+                
+        }else if showPremium{
+            return sortedMenu.filter { $0.price > 10}
+        }else{
             return sortedMenu
         }
-        
+    }
+  
+    var totalPriceOfVisibileItems: Double {
+        displayMenu.reduce(0) { $0 + $1.price }
+    }
+    
+    var totalNumberOfPremuimItems: Int {
+        displayMenu.filter { $0.price > 10 }.count
+            
+    }
+    
+    var totalNumberOfAffordable: Int {
+        displayMenu.filter { $0.price < 10
+        }.count
     }
     
     var averagePrice: Double {
@@ -104,6 +122,8 @@ struct MenuView: View {
             VStack{
                 Toggle("Show welcome message", isOn: $showMessage)
                 Toggle("Show only value menu", isOn: $showAffordableItems)
+                    
+                Toggle("Show premium items only", isOn: $showPremium)
             }
             .padding()
             
@@ -126,20 +146,40 @@ struct MenuView: View {
             Divider()
             List{
                 ForEach(displayMenu, id: \.name){
-                    name, price in
+                    item in
+                    MenuItemRowView(name:item.name, price:item.price)
                     
-                    HStack{
-                        Text("\(name)")
-                        Spacer()
-                        Text("\(self.priceFormatter(price))")
-                            .foregroundColor(.secondary)
-                        
-                    }
+                
                     
                 }
                 
             }
+            HStack{
+                
+                HStack{
+                    Text("Premium: \(totalNumberOfPremuimItems)")
+                        .font(.footnote)
+                        .bold()
+                        
+                }
+                Divider()
+                HStack{
+                    Text("Afforable: \(totalNumberOfAffordable)")
+                        .font(.footnote)
+                        .bold()
+                        
+                }
+                Divider()
+                HStack{
+                    Text("Total: \(self.priceFormatter(self.totalPriceOfVisibileItems))")
+                        .font(.footnote)
+                        .bold()
+                }
+                
             
+            }.frame(height: 20)
+                
+            Divider()
             Section{
                 GroupBox{
                     DisclosureGroup("Menu Information", isExpanded: $isExpand){
