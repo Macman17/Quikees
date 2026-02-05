@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		C591D6D32F253C27004A96B0 /* 103project-Cort6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "103project-Cort6.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C591D7202F32F213004A96B0 /* 104project-Cort6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "104project-Cort6.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C591D6D52F253C27004A96B0 /* 103project-Cort6 */ = {
+		C591D7222F32F213004A96B0 /* 104project-Cort6 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "103project-Cort6";
+			path = "104project-Cort6";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C591D6D02F253C27004A96B0 /* Frameworks */ = {
+		C591D71D2F32F213004A96B0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C591D6CA2F253C26004A96B0 = {
+		C591D7172F32F213004A96B0 = {
 			isa = PBXGroup;
 			children = (
-				C591D6D52F253C27004A96B0 /* 103project-Cort6 */,
-				C591D6D42F253C27004A96B0 /* Products */,
+				C591D7222F32F213004A96B0 /* 104project-Cort6 */,
+				C591D7212F32F213004A96B0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C591D6D42F253C27004A96B0 /* Products */ = {
+		C591D7212F32F213004A96B0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C591D6D32F253C27004A96B0 /* 103project-Cort6.app */,
+				C591D7202F32F213004A96B0 /* 104project-Cort6.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C591D6D22F253C27004A96B0 /* 103project-Cort6 */ = {
+		C591D71F2F32F213004A96B0 /* 104project-Cort6 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C591D6DE2F253C28004A96B0 /* Build configuration list for PBXNativeTarget "103project-Cort6" */;
+			buildConfigurationList = C591D72B2F32F215004A96B0 /* Build configuration list for PBXNativeTarget "104project-Cort6" */;
 			buildPhases = (
-				C591D6CF2F253C27004A96B0 /* Sources */,
-				C591D6D02F253C27004A96B0 /* Frameworks */,
-				C591D6D12F253C27004A96B0 /* Resources */,
+				C591D71C2F32F213004A96B0 /* Sources */,
+				C591D71D2F32F213004A96B0 /* Frameworks */,
+				C591D71E2F32F213004A96B0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				C591D6D52F253C27004A96B0 /* 103project-Cort6 */,
+				C591D7222F32F213004A96B0 /* 104project-Cort6 */,
 			);
-			name = "103project-Cort6";
+			name = "104project-Cort6";
 			packageProductDependencies = (
 			);
-			productName = "103project-Cort6";
-			productReference = C591D6D32F253C27004A96B0 /* 103project-Cort6.app */;
+			productName = "104project-Cort6";
+			productReference = C591D7202F32F213004A96B0 /* 104project-Cort6.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C591D6CB2F253C26004A96B0 /* Project object */ = {
+		C591D7182F32F213004A96B0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
-					C591D6D22F253C27004A96B0 = {
+					C591D71F2F32F213004A96B0 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
 			};
-			buildConfigurationList = C591D6CE2F253C26004A96B0 /* Build configuration list for PBXProject "103project-Cort6" */;
+			buildConfigurationList = C591D71B2F32F213004A96B0 /* Build configuration list for PBXProject "104project-Cort6" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = C591D6CA2F253C26004A96B0;
+			mainGroup = C591D7172F32F213004A96B0;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = C591D6D42F253C27004A96B0 /* Products */;
+			productRefGroup = C591D7212F32F213004A96B0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C591D6D22F253C27004A96B0 /* 103project-Cort6 */,
+				C591D71F2F32F213004A96B0 /* 104project-Cort6 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C591D6D12F253C27004A96B0 /* Resources */ = {
+		C591D71E2F32F213004A96B0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C591D6CF2F253C27004A96B0 /* Sources */ = {
+		C591D71C2F32F213004A96B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C591D6DC2F253C28004A96B0 /* Debug */ = {
+		C591D7292F32F215004A96B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -186,7 +186,7 @@
 			};
 			name = Debug;
 		};
-		C591D6DD2F253C28004A96B0 /* Release */ = {
+		C591D72A2F32F215004A96B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -239,7 +239,7 @@
 			};
 			name = Release;
 		};
-		C591D6DF2F253C28004A96B0 /* Debug */ = {
+		C591D72C2F32F215004A96B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -265,7 +265,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Quikees.-03project-Cort6";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Quikees.-04project-Cort6";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -281,7 +281,7 @@
 			};
 			name = Debug;
 		};
-		C591D6E02F253C28004A96B0 /* Release */ = {
+		C591D72D2F32F215004A96B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -307,7 +307,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Quikees.-03project-Cort6";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Quikees.-04project-Cort6";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -326,25 +326,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C591D6CE2F253C26004A96B0 /* Build configuration list for PBXProject "103project-Cort6" */ = {
+		C591D71B2F32F213004A96B0 /* Build configuration list for PBXProject "104project-Cort6" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C591D6DC2F253C28004A96B0 /* Debug */,
-				C591D6DD2F253C28004A96B0 /* Release */,
+				C591D7292F32F215004A96B0 /* Debug */,
+				C591D72A2F32F215004A96B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C591D6DE2F253C28004A96B0 /* Build configuration list for PBXNativeTarget "103project-Cort6" */ = {
+		C591D72B2F32F215004A96B0 /* Build configuration list for PBXNativeTarget "104project-Cort6" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C591D6DF2F253C28004A96B0 /* Debug */,
-				C591D6E02F253C28004A96B0 /* Release */,
+				C591D72C2F32F215004A96B0 /* Debug */,
+				C591D72D2F32F215004A96B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C591D6CB2F253C26004A96B0 /* Project object */;
+	rootObject = C591D7182F32F213004A96B0 /* Project object */;
 }

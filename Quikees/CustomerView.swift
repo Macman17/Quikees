@@ -36,10 +36,20 @@ struct CustomerView: View {
                 Divider()
                 VStack{
                     VStack{
-                        Text(c.contactCard()).frame(maxWidth: .infinity, alignment: .init(horizontal: .leading, vertical: .top))
+                        Text(c.contactCard())
+                        
+                            .frame(maxWidth: .infinity, alignment: .init(horizontal: .leading, vertical: .top))
                             .background(Color(.systemGray6))
                             .cornerRadius(10)
                             .padding(7)
+                        
+                        if c.visit > 3  {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.yellow)
+                            Text("Loyal Customer")
+                                .font(.caption)
+
+                        }
                     }.background(Color(.systemGray5))
                     Divider()
                     
