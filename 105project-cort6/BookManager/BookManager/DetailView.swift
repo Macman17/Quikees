@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct DetailView: View {
+    
+    let book: Book
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            HStack{
+                Image(book.cover)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100,height: 100 )
+                    .padding()
+                VStack(alignment: .leading){
+                    VStack{
+                        Text(book.title)
+                        Text("by \(book.author)")
+                    }
+                }
+            }
+            Text(book.summary)
+        }
+        .padding(.horizontal)
     }
-}
-
-#Preview {
-    DetailView()
 }

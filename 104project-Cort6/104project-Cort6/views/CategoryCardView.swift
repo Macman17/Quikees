@@ -18,7 +18,7 @@ struct CategoryCardView: View {
             ZStack{
                 
                 Circle()
-                    .foregroundStyle(Color("Accent"))
+                    .foregroundStyle(Color("Primary"))
                 Image(systemName: icon)
                     .resizable()
                     .scaledToFit()

@@ -38,7 +38,7 @@ struct SpecialistView: View {
                             
                             HStack{
                                 
-                                Text("Categies")
+                                Text("Categories")
                                     .font(.title2.bold())
                                 
                                 Spacer()
@@ -57,26 +57,31 @@ struct SpecialistView: View {
                                     CategoryCardView(icon: "hand.raised", title: "Nails")
                                     CategoryCardView(icon: "eye", title: "Lashes")
                                     CategoryCardView(icon: "wind", title: "Hair")
-                                    CategoryCardView(icon: "hand.and.spanrkle", title: "Masseges")
+                                    CategoryCardView(icon: "hands.and.sparkles", title: "Massage")
                                 }
                             }
                             
                         }
                         
                         .padding()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .frame(maxWidth: .infinity, maxHeight: 200)
                         .background(Color("Secondary"))
                      
                         VStack(alignment: .leading){
                             
                             Text("Top Specialist")
                                 .font(.title2).bold()
+                                .foregroundStyle(Color("Secondary"))
+                                
                             
                             ScrollView(.vertical, showsIndicators: false){
                                 
                                 VStack{
-                                    Rectangle()
-                                        .frame(width:350, height: 100)
+                                    SpecialistContactCardView(specialist: Specialist( name: "Dr. John Doe", specialty: "Nails", salaryRange: "$50-60", rating: 4.5, price: "£$$20-$50", ))
+                                    
+                                    SpecialistContactCardView(specialist: Specialist(name: "Hey", specialty: "Lashes", salaryRange: "10-30", rating: 5.00, price: "23.00"))
+                                 
+                                    
                                 }
                             }
                         }

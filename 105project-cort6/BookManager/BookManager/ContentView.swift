@@ -9,53 +9,40 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    let books: [Book] = [
+        Book(title: "Walking tall", author: "R. J. Bicken", cover: "lotr_fellowship", summary: "This is a summary"), Book(title: "Tee Top", author: "R John", cover: "lotr_towers", summary: "This is a summary" ), Book(title: "The Great Gatsby", author: "F. Scott Fitzgerald", cover: "lotr_king",summary: "This is a summary")
+    ]
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        NavigationStack {
+            List(books, id:\.self.id){
+                book in
+                NavigationLink(destination: DetailView(book: book)){
+                    HStack{
+                        Image(book.cover)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 60, height: 60)
+                            .padding()
+                        VStack(alignment: .leading){
+                            Text(book.title)
+                                .font(.headline)
+                                .fontWeight(.bold)
+                            Text(book.author)
+                                .foregroundColor(.secondary)
+                                .fontWeight(.bold)
+                        }
                     }
                 }
-                .onDelete(perform: deleteItems)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
+            .navigationTitle("Book Manager")
+            
         }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+        
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        
 }
