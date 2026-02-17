@@ -8,13 +8,14 @@
 
 import SwiftUI
 
-struct ProfossorListView: View {
+struct ProfessorListView: View {
     
-    var professorList: [Professor] = [
+   @State private var professorList: [Professor] = [
         Professor(lastName: "Kee", firstName: "Bee", phoneNumber: "284-3992"),
         Professor(lastName: "Fat", firstName: "Man", phoneNumber: "384-2943")
     ]
     
+   
     @State private var lastName: String = ""
     @State private var firstName: String = ""
     
@@ -53,7 +54,9 @@ struct ProfossorListView: View {
             
             let newProfessor = Professor(lastName: lastName, firstName: firstName, phoneNumber: phoneNumber)
             
-            professorList
+          
+            professorList.append(newProfessor)
+            
             
             firstName = ""
             lastName = ""
@@ -65,5 +68,5 @@ struct ProfossorListView: View {
 }
 
 #Preview {
-    ProfossorListView()
+    ProfessorListView()
 }
