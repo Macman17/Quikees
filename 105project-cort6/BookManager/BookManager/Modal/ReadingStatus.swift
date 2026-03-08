@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+
+enum ReadingStatus: String, CaseIterable, Codable, Hashable {
+    case planToRead = "plan to read"
+    case reading = "reading"
+    case dropped = "dropped"
+    case finshed = "finished"
+    
+    case unknown = "unknown"
+    
+}

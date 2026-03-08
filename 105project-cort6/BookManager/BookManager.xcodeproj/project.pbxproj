@@ -45,6 +45,11 @@
 			path = BookManagerUITests;
 			sourceTree = "<group>";
 		};
+		C58B970D2F47E3E9007FF2DD /* UserManager */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = UserManager;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 		C503A3962F3EB65100C0A00A = {
 			isa = PBXGroup;
 			children = (
+				C58B970D2F47E3E9007FF2DD /* UserManager */,
 				C503A3A12F3EB65100C0A00A /* BookManager */,
 				C503A3B12F3EB65300C0A00A /* BookManagerTests */,
 				C503A3BB2F3EB65300C0A00A /* BookManagerUITests */,
@@ -109,6 +115,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				C503A3A12F3EB65100C0A00A /* BookManager */,
+				C58B970D2F47E3E9007FF2DD /* UserManager */,
 			);
 			name = BookManager;
 			packageProductDependencies = (

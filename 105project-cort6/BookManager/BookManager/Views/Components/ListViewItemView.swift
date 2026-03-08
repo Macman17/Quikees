@@ -6,13 +6,32 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ListViewItemView: View {
+    let book : PersistentBook
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        
+        HStack{
+            Image( uiImage: (book.cover))
+                .resizable()
+                .scaledToFit()
+                .frame(width: 60,height: 60 )
+                .padding()
+            VStack(alignment: .leading){
+                    
+                Text(book.title.capitalized(with: .current))
+                        .font(.title.bold())
+                    Text("by \(book.author)")
+                        .font(.subheadline)
+                    
+                    
+                
+            }
+        }
     }
 }
+      
 
-#Preview {
-    ListViewItemView()
-}

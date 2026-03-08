@@ -7,12 +7,22 @@
 
 import SwiftUI
 
+    
+
 struct StarRatingView: View {
+    var rating: Int
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(spacing: 2){
+            ForEach(1...5, id: \.self) { index in
+                    Image(systemName: index <= rating ?
+                          "star.fill" : "star")
+                        .font(.title)
+                        .foregroundColor(.yellow)
+                }
+            }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Rating: \(rating) out of 5")
     }
 }
 
-#Preview {
-    StarRatingView()
-}

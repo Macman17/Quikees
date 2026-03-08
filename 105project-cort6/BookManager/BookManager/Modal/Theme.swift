@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+
+enum Theme: String, CaseIterable {
+    case light
+    case dark
+    case system
+}

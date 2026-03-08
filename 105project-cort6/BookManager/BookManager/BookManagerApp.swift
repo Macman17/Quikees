@@ -10,11 +10,13 @@ import SwiftData
 
 @main
 struct BookManagerApp: App {
-  
-
+    
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
+        
     }
 }
+  

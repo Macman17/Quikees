@@ -6,40 +6,90 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct DetailView: View {
     
-    let book: Book
+    var book: PersistentBook
+    @State private var showEditSheet: Bool = false
+    @State private var isFavorite: Bool = false
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
-        VStack{
+        VStack(alignment: .leading){
             HStack{
-                Image(book.cover)
+                Image(uiImage: book.cover)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 120,height: 120 )
-                    .padding()
+                    .frame(width: 160,height: 160 )
+                
                 VStack(alignment: .leading){
                     VStack{
                         Text(book.title)
-                            .font(.title.bold())
+                            .font(.largeTitle.bold())
+                        
                         Text("by \(book.author)")
                             .font(.subheadline)
+                        HStack{
+                            CustomCapsule(text: book.genre.rawValue, color: .red)
+                            Spacer()
+                            CustomCapsule(text: book.readingStatus.rawValue, color: .green)
+                            FavoriteToggle(isFavorite: $isFavorite)
+                                .onChange(of:isFavorite) {
+                                    book.isFavorite = isFavorite
+                                    try? modelContext.save()
+                                        
+                                    
+                                }
+                        }
                         
                         
                     }
                 }
             }
+            
             HStack{
                 Text(book.summary)
             }
             .font(.body)
             .padding()
             .frame(maxWidth: .infinity, alignment: .center)
-            .foregroundColor(.secondary)
-            .border(Color(.gray), width: 1)
+            
+            
+            if (book.rating > 0 || !book.review.isEmpty){
+                VStack( alignment: .leading){
+                    
+                    HStack(){
+                        Text("My Review")
+                            .font(.headline.bold())
+                        Spacer()
+                        StarRatingView(rating: .init(book.rating))
+                        
+                    }
+                    
+                    
+                    Text("\(book.review)")
+                        .font(.subheadline)
+                }
+                .frame(width: .infinity, height: .infinity)
+                .padding()
+                Spacer()
+                
+            }
+        }
+        
+        .padding(.horizontal)
+        .navigationTitle("Details")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button("Edit", action:{
+                   showEditSheet.toggle()
+        }))
+        .sheet(isPresented: $showEditSheet) {
+            AddEditView(book: book)
             
         }
-        .padding(.horizontal)
+        .background(Color(.primary))
     }
+        
 }
+    
