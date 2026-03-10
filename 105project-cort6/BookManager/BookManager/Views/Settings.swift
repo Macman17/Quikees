@@ -12,7 +12,7 @@ struct Settings: View {
     @AppStorage(SETTINGS_THEME_KEY) private var currentTheme: Theme = .system
     @AppStorage(SETTINGS_GRID_COLUMNS_KEY) private var gridColumns: Int = 2
     @AppStorage(SETTINGS_ACCENT_COLOR_KEY) private var accentColor: Color = .blue
-    @AppStorage(SETTINGS_FONT_SIZE_KEY) private var fontSize: Int = 14
+    @AppStorage(SETTINGS_FONT_SIZE_KEY) private var fontSize: Int = 7
     @AppStorage(SETTINGS_SORT_KEY) private var sort: SortOption  = .title
     
     var body: some View {

@@ -51,7 +51,7 @@ struct FavoritesView: View {
                     ToolbarItem(placement: .topBarLeading){
                         Button(action: { isFilterSheetPresented.toggle()
                         }){
-                            Image(systemName: "list.horizontal.3.decrease.circle")
+                            Image(systemName: "line.3.horizontal.decrease.circle.fill")
                         }
                         .accessibilityLabel("Open filter options")
                     }

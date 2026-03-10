@@ -12,13 +12,12 @@ import PhotosUI
 struct ImageField: View {
     
     @Binding var data: Data?
-    let image: UIImage
     @State private var photosPickerItem: PhotosPickerItem?
     private var imagePreview: UIImage {
         if let data {
-              return UIImage(data: data)!
+            UIImage(data: data)!
           } else{
-              return UIImage(resource: .lotrFellowship)
+              UIImage(resource: .lotrFellowship)
               }
     }
       
@@ -30,7 +29,7 @@ struct ImageField: View {
             photoLibrary: .shared()
         ){
         
-            Image(uiImage: image)
+            Image(uiImage: imagePreview)
                 .resizable()
                 .scaledToFit()
                 .aspectRatio(contentMode: .fill)
