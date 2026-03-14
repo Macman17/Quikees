@@ -48,5 +48,20 @@ struct UtilsTests {
     }
 }
 
+    @Test("Test filters together function all filter book")
+    func testFilterTogether(){
+        let books: [PersistentBook] = [
+                    PersistentBook(title: "Book 1"),
+                    PersistentBook(title: "Book 2", readingStatus: .finshed),
+                    PersistentBook(title: "Book 3"),
+                    PersistentBook(title: "Book 4",isFavorite: true ,genre: .horror, readingStatus: .finshed)
+                ]
+   
+        let filteredBooks = filterFavoriteBook(books: books, genre: .horror, readingStatus: .finshed)
+    
+    #expect(filteredBooks.count == 1)
+    #expect(filteredBooks.map(\.title) == ["Book 4"])
+}
+
             
 

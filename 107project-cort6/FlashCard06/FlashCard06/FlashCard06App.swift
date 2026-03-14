@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct FlashCard06App: App {
+    @StateObject private var store = DeckStore()
+    @AppStorage("darkMode") private var isDarkMode: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack{
+                DeckListView()
+            }.environmentObject(store)
         }
     }
 }
