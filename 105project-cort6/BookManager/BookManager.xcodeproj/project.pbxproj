@@ -29,9 +29,30 @@
 		C503A3B82F3EB65300C0A00A /* BookManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C58B97602F634900007FF2DD /* Exceptions for "BookManager" folder in "BookManager" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				BookManager_TMApp.swift,
+			);
+			target = C503A39E2F3EB65100C0A00A /* BookManager */;
+		};
+		C58B97612F634900007FF2DD /* Exceptions for "BookManager" folder in "BookManagerTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				BookManager_TMApp.swift,
+			);
+			target = C503A3AD2F3EB65300C0A00A /* BookManagerTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C503A3A12F3EB65100C0A00A /* BookManager */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C58B97602F634900007FF2DD /* Exceptions for "BookManager" folder in "BookManager" target */,
+				C58B97612F634900007FF2DD /* Exceptions for "BookManager" folder in "BookManagerTests" target */,
+			);
 			path = BookManager;
 			sourceTree = "<group>";
 		};

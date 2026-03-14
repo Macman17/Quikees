@@ -15,6 +15,11 @@ struct DetailView: View {
     @State private var isFavorite: Bool = false
     @Environment(\.modelContext) private var modelContext
     
+    init(book: PersistentBook){
+        self.book = book
+        self.isFavorite = book.isFavorite
+    }
+    
     var body: some View {
         VStack(alignment: .leading){
             HStack{

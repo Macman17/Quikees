@@ -22,6 +22,8 @@ class PersistentBook {
     var genre: Genre
     var readingStatus: ReadingStatus
     
+ 
+    
    
     
     init(title: String,
@@ -30,8 +32,8 @@ class PersistentBook {
          rating: Int = 0,
          review: String = "",
          isFavorite: Bool = false,
-         genre: Genre,
-         readingStatus: ReadingStatus,
+         genre: Genre = .unknown,
+         readingStatus: ReadingStatus = .unknown,
          coverData: Data? = nil) {
         self.title = title
         self.author = author

@@ -110,7 +110,7 @@ struct AddEditView: View {
                             ToolbarItem(placement: .confirmationAction) {
                                 Button("Save") {
                                     let isNewBook = book == nil
-                                    let bookToSave = book ?? PersistentBook(title: "", author: "", summary: "", rating: 0, review: "", isFavorite: false, genre: .unknown, readingStatus: .unknown)
+                                    let bookToSave = book ?? PersistentBook(title: title)
                                     bookToSave.title = title
                                     bookToSave.author = author
                                     bookToSave.summary = summary
@@ -119,6 +119,9 @@ struct AddEditView: View {
                                     bookToSave.genre = genre
                                     bookToSave.isFavorite = isFavorite
                                     bookToSave.readingStatus = readingStatus
+                                    if (coverData != nil){
+                                        bookToSave.coverData = coverData!
+                                    }
                                     print(bookToSave)
                                         if isNewBook {
                                             modelContext.insert(bookToSave)
