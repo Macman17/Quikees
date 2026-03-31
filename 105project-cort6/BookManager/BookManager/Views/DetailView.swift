@@ -90,7 +90,7 @@ struct DetailView: View {
                    showEditSheet.toggle()
         }))
         .sheet(isPresented: $showEditSheet) {
-            AddEditView(book: book)
+            AddEditView(book: book, modelContext: modelContext)
             
         }
         .background(Color(.primary))

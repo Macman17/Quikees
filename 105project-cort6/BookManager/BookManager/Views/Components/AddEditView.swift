@@ -12,67 +12,33 @@ import SwiftData
 struct AddEditView: View {
     
     
-    var book: PersistentBook?
-    @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) private var modelContext
-    
-    @State private var title : String
-    @State private var author : String
-    @State private var summary : String
-    @State private var rating: Int
-    @State private var review : String
-    @State private var genre: Genre
-    @State private var readingStatus: ReadingStatus
-    @State private var isFavorite: Bool
-    @State private var coverData: Data?
+        @StateObject private var viewModel: AddEditViewModel
+        @Environment(\.dismiss) var dismiss
+  
     
     
     
-    init(book: PersistentBook? = nil){
-        self.book = book
-        if let book{
-            print(book)
-            title = book.title
-            author = book.author
-            summary = book.summary
-            rating = book.rating
-            review = book.review
-            genre = book.genre
-            readingStatus = book.readingStatus
-            isFavorite = book.isFavorite
-            coverData = book.coverData
-            
-            
-        } else {
-            title = ""
-            author = ""
-            summary = ""
-            rating = 0
-            review = ""
-            genre = .unknown
-            readingStatus = .unknown
-            isFavorite = false
-           
-        }
+    init(book: PersistentBook? = nil, modelContext: ModelContext){
+        _viewModel = StateObject(wrappedValue:  AddEditViewModel(book: book,  modelContext:  modelContext))
     }
         
         var body: some View {
             NavigationStack{
-                var _ = print(title)
+                
                 Form{
                     Section(header: Text("Book details")){
-                        TextField("Book Title", text: $title)
-                        TextField("Author", text: $author)
-                        TextField("Book Summary", text: $summary)
+                        TextField("Book Title", text: $viewModel.title)
+                        TextField("Author", text: $viewModel.author)
+                        TextField("Book Summary", text: $viewModel.summary)
                             .multilineTextAlignment(.leading)
-                        Picker("Genre", selection: $genre){
+                        Picker("Genre", selection: $viewModel.genre){
                             ForEach(Genre.allCases, id: \.self){ genre in
                                 Text(genre.rawValue).tag(genre)
                             }
                         }
                         Section(header: Text("Book details")){
-                            ImageField(data: $coverData)
-                            Picker("Reading Status", selection: $readingStatus){
+                            ImageField(data: $viewModel.coverData)
+                            Picker("Reading Status", selection: $viewModel.readingStatus){
                                 ForEach(ReadingStatus.allCases, id: \.self){
                                     readingstatus in
                                     Text(readingstatus.rawValue).tag(readingstatus)
@@ -82,12 +48,12 @@ struct AddEditView: View {
                             
                             Section(header: Text("Book Review")){
                                 
-                                StarRatingFieldView(rating: $rating)
-                                TextEditor(text: $review)
+                                StarRatingFieldView(rating: $viewModel.rating)
+                                TextEditor(text: $viewModel.review)
                                     .frame(height: 150)
                                 
                                 
-                                TextField("Review", text: $review)
+                                TextField("Review", text: $viewModel.review)
                                 
                                     .multilineTextAlignment(.leading)
                                 
@@ -96,7 +62,7 @@ struct AddEditView: View {
                     }
                 }
                         
-                        .navigationTitle("\(book == nil ? "Add" : "Edit") Book")
+                        .navigationTitle(viewModel.navigationTitle)
                         .navigationBarTitleDisplayMode(.inline)
                         .toolbar {
                             ToolbarItem(placement: .cancellationAction){
@@ -105,35 +71,13 @@ struct AddEditView: View {
                                 }
                             }
                             ToolbarItem(placement: .primaryAction){
-                                FavoriteToggle(isFavorite: $isFavorite)
+                                FavoriteToggle(isFavorite: $viewModel.isFavorite)
                             }
                             ToolbarItem(placement: .confirmationAction) {
                                 Button("Save") {
-                                    let isNewBook = book == nil
-                                    let bookToSave = book ?? PersistentBook(title: title)
-                                    bookToSave.title = title
-                                    bookToSave.author = author
-                                    bookToSave.summary = summary
-                                    bookToSave.rating = rating
-                                    bookToSave.review = review
-                                    bookToSave.genre = genre
-                                    bookToSave.isFavorite = isFavorite
-                                    bookToSave.readingStatus = readingStatus
-                                    if (coverData != nil){
-                                        bookToSave.coverData = coverData!
-                                    }
-                                    print(bookToSave)
-                                        if isNewBook {
-                                            modelContext.insert(bookToSave)
-                                        }
-                                        do {
-                                            try modelContext.save()
-                                            
-                                        } catch {
-                                            print("Failed to save the book: \(error)")
-                                        }
+                                
                                             dismiss()
-                                    }.disabled(title.isEmpty)
+                                }.disabled(viewModel.isNotSavable)
                             }
                             
                         }

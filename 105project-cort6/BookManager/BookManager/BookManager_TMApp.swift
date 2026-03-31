@@ -8,7 +8,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct BookManager_TMApp: App {
+struct BookManager_TM: App {
     let modelContainer: ModelContainer
      
         var body: some Scene {

@@ -14,6 +14,7 @@ import UIKit
 class PersistentBook {
     var title: String
     var author: String
+    var year: String
     var coverData: Data?
     var summary: String
     var rating: Int = 0
@@ -22,12 +23,23 @@ class PersistentBook {
     var genre: Genre
     var readingStatus: ReadingStatus
     
- 
-    
-   
+    init(_ book: PersistentBook){
+        self.title = book.title
+        self.author = book.author
+        self.year = book.year
+        self.summary = book.summary
+        self.rating = book.rating
+        self.review = book.review
+        self.isFavorite = book.isFavorite
+        self.genre = book.genre
+        self.readingStatus = book.readingStatus
+        self.coverData = book.coverData
+        
+    }
     
     init(title: String,
          author: String = "",
+         year: String = "",
          summary: String = "",
          rating: Int = 0,
          review: String = "",
@@ -37,6 +49,7 @@ class PersistentBook {
          coverData: Data? = nil) {
         self.title = title
         self.author = author
+        self.year = year
         self.summary = summary
         self.rating = rating
         self.review = review

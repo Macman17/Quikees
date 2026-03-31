@@ -9,10 +9,14 @@ import SwiftUI
 
 struct DeckListView: View {
     @EnvironmentObject var store:DeckStore
+    
+    @State private var showAddDeck: Bool = false
+    
     var body: some View {
         List{
             Section("Decks"){
                 ForEach(store.decks){ deck in
+                    
                     NavigationLink{
                         StudyView(deck: deck)
                     } label: {

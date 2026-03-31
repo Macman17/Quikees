@@ -33,10 +33,9 @@ struct ListView: View {
 //                }
 //                newBook = getNewBook()
             }content:{
-                AddEditView()
+                AddEditView(modelContext: modelContext)
             }
         }
     }
 }
-
 
