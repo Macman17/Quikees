@@ -10,6 +10,10 @@ import SwiftUI
 struct DeckListView: View {
     @EnvironmentObject var store:DeckStore
     
+    @AppStorage(SETTINGS_THEME_KEY) private var currentTheme: Theme = .system
+    
+    @AppStorage(SETTINGS_FONT_SIZE_KEY) private var fontSize: Int = 7
+    
     @State private var showAddDeck: Bool = false
     
     var body: some View {
@@ -20,23 +24,25 @@ struct DeckListView: View {
                     NavigationLink{
                         StudyView(deck: deck)
                     } label: {
-                        VStack{
+                        VStack(alignment: .leading){
                             Text(deck.name)
-                            Text("\(deck.cards.count) ")
+                                
+                            Text("\(deck.cards.count)")
                         }
                     }
                     
-                }
-            }.toolbar{
-                ToolbarItem(placement: .topBarTrailing){
-                    NavigationLink{
-                        SettingsView()
-                    } label:{
-                        Image(systemName: "gears")
-                    }
+                    
                 }
             }
-        }
+        }.toolbar{
+                    ToolbarItem(placement: .topBarTrailing){
+                        NavigationLink{
+                            SettingsView()
+                        } label:{
+                            Image(systemName: "gear")
+                        }
+                    }
+            }
     }
 }
 

@@ -11,7 +11,9 @@ import SwiftUI
 struct FlashCard06App: App {
     @StateObject private var store = DeckStore()
     @AppStorage("darkMode") private var isDarkMode: Bool = false
-    
+    @AppStorage("theme") private var theme: String = "light"
+    @AppStorage("SETTINGS_FONT_SIZE_KEY") private var fontSize: Int = 7
+  
     var body: some Scene {
         WindowGroup {
             NavigationStack{

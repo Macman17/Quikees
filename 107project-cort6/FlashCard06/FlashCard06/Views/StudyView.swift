@@ -16,6 +16,8 @@ struct StudyView: View {
     @AppStorage("showBackFirst") private var showBackFirst: Bool = false
     @AppStorage("darkMode") private var isDarkMode: Bool = false
     
+  
+    
     
     @State private var index: Int = 0
     @State private var isFlipped: Bool = false
@@ -23,15 +25,15 @@ struct StudyView: View {
     
     var body: some View {
         VStack(spacing:20){
-            if sessionCards.isEmpty {
-                Text("No cards to study")
+            if !sessionCards.isEmpty {
+                Text("No cards in this deck")
             } else {
                 Text("\(index + 1) / \(sessionCards.count)")
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(.thinMaterial)
-                        .frame(height: 100)
+                        .frame(height: 220)
                     
                     Text("Spanish")
                 }
@@ -51,7 +53,11 @@ struct StudyView: View {
                         
                     }.buttonStyle(.bordered)
                         .disabled(index == sessionCards.count - 1 )
-                    
+                    Button("Next"){
+                        
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(index == 0)
                 }
             }
             
@@ -101,5 +107,8 @@ struct StudyView: View {
 
 
 #Preview {
-    StudyView(deck: Deck(name: "My Deck", cards: [Flashcard(front: "Hello", back: "Hola"), Flashcard(front: "My name is", back: "Mi nombre es")]))
+    StudyView(deck: Deck(name: "My Deck", cards: [
+        Flashcard(front: "Hello", back: "Hola"),
+        Flashcard(front: "My name is", back: "Mi nombre es")
+    ]))
 }
