@@ -1,14 +1,14 @@
 //
-//  JournalCohort6App.swift
-//  JournalCohort6
+//  WeatherAppApp.swift
+//  WeatherApp
 //
-//  Created by Naqui Darby on 3/17/26.
+//  Created by Naqui Darby on 4/12/26.
 //
 
 import SwiftUI
 
 @main
-struct JournalCohort6App: App {
+struct WeatherAppApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

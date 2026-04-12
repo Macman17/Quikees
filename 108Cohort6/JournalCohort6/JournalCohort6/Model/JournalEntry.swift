@@ -9,18 +9,18 @@ import Foundation
 import SwiftData
 
 
-
+@Model
 class JournalEntry {
     
     var title: String
     var body: String
-    var createAt: Date
+    var createdAt: Date
     var isFavorite: Bool
     
-    init(title: String, body: String, createAt: Date = .now, isFavorite: Bool) {
+    init(title: String, body: String, createdAt: Date = .now, isFavorite: Bool = false) {
         self.title = title
         self.body = body
-        self.createAt = createAt
+        self.createdAt = createdAt
         self.isFavorite = isFavorite
     }
 }
