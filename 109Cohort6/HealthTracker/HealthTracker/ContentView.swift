@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  Rick&Morty
+//  HealthTracker
 //
-//  Created by Naqui Darby on 3/24/26.
+//  Created by Naqui Darby on 4/14/26.
 //
 
 import SwiftUI
