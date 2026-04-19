@@ -18,12 +18,23 @@ class PostService{
     
     func fetchPosts() async throws -> [Post]{
         
-        guard let url = URL(string:  "https://jsonplaceholder.tyicode.com/posts")
+        guard let url = URL(string:"https://jsonplaceholder.typicode.com/posts")
         else {throw NetworkError.invalidURL}
         
         let(data,response) = try await URLSession.shared.data(from: url)
         
-        guard let httpResponse = response as? HTTPURLResponse else {throw NetworkError.invalidResponse
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw NetworkError.invalidResponse
+        }
+        
+        guard httpResponse.statusCode == 200 else {
+            throw NetworkError.invalidStatusCode
+        }
+        
+        do{
+            return try JSONDecoder().decode([Post].self, from: data)
+        }catch{
+            throw NetworkError.decodingError
         }
     }
 }
