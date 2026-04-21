@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = LocationViewModel()
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Nearby Log").font(.headline).bold()
+            
+            if viewModel.viewState == .needsPermission {
+                PermissionView(onEnable: viewModel.enableLocation)
+            }else if viewModel.viewState == .loading {
+                LoadingView()
+            }else if viewModel.viewState == .ready {
+                LocationReadyView(
+                    latitudeText: viewModel.latText,
+                    longitudeText: viewModel.lonText,
+                    onRefresh: viewModel.refresh,
+                    onSave: viewModel.saveCheckIn)
+            }
         }
         .padding()
     }

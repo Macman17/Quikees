@@ -7,32 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		C5602DCE2F92E84000C74B10 /* LocationCohort6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationCohort6.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5602E0C2F95DB5F00C74B10 /* MotionClass2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotionClass2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C5602E022F95941800C74B10 /* Exceptions for "LocationCohort6" folder in "LocationCohort6" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = C5602DCD2F92E84000C74B10 /* LocationCohort6 */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C5602DD02F92E84000C74B10 /* LocationCohort6 */ = {
+		C5602E0E2F95DB5F00C74B10 /* MotionClass2 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				C5602E022F95941800C74B10 /* Exceptions for "LocationCohort6" folder in "LocationCohort6" target */,
-			);
-			path = LocationCohort6;
+			path = MotionClass2;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C5602DCB2F92E84000C74B10 /* Frameworks */ = {
+		C5602E092F95DB5F00C74B10 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C5602DC52F92E84000C74B10 = {
+		C5602E032F95DB5F00C74B10 = {
 			isa = PBXGroup;
 			children = (
-				C5602DD02F92E84000C74B10 /* LocationCohort6 */,
-				C5602DCF2F92E84000C74B10 /* Products */,
+				C5602E0E2F95DB5F00C74B10 /* MotionClass2 */,
+				C5602E0D2F95DB5F00C74B10 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C5602DCF2F92E84000C74B10 /* Products */ = {
+		C5602E0D2F95DB5F00C74B10 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C5602DCE2F92E84000C74B10 /* LocationCohort6.app */,
+				C5602E0C2F95DB5F00C74B10 /* MotionClass2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C5602DCD2F92E84000C74B10 /* LocationCohort6 */ = {
+		C5602E0B2F95DB5F00C74B10 /* MotionClass2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C5602DD92F92E84200C74B10 /* Build configuration list for PBXNativeTarget "LocationCohort6" */;
+			buildConfigurationList = C5602E172F95DB6100C74B10 /* Build configuration list for PBXNativeTarget "MotionClass2" */;
 			buildPhases = (
-				C5602DCA2F92E84000C74B10 /* Sources */,
-				C5602DCB2F92E84000C74B10 /* Frameworks */,
-				C5602DCC2F92E84000C74B10 /* Resources */,
+				C5602E082F95DB5F00C74B10 /* Sources */,
+				C5602E092F95DB5F00C74B10 /* Frameworks */,
+				C5602E0A2F95DB5F00C74B10 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				C5602DD02F92E84000C74B10 /* LocationCohort6 */,
+				C5602E0E2F95DB5F00C74B10 /* MotionClass2 */,
 			);
-			name = LocationCohort6;
+			name = MotionClass2;
 			packageProductDependencies = (
 			);
-			productName = LocationCohort6;
-			productReference = C5602DCE2F92E84000C74B10 /* LocationCohort6.app */;
+			productName = MotionClass2;
+			productReference = C5602E0C2F95DB5F00C74B10 /* MotionClass2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C5602DC62F92E84000C74B10 /* Project object */ = {
+		C5602E042F95DB5F00C74B10 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
-					C5602DCD2F92E84000C74B10 = {
+					C5602E0B2F95DB5F00C74B10 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
 			};
-			buildConfigurationList = C5602DC92F92E84000C74B10 /* Build configuration list for PBXProject "LocationCohort6" */;
+			buildConfigurationList = C5602E072F95DB5F00C74B10 /* Build configuration list for PBXProject "MotionClass2" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = C5602DC52F92E84000C74B10;
+			mainGroup = C5602E032F95DB5F00C74B10;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = C5602DCF2F92E84000C74B10 /* Products */;
+			productRefGroup = C5602E0D2F95DB5F00C74B10 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C5602DCD2F92E84000C74B10 /* LocationCohort6 */,
+				C5602E0B2F95DB5F00C74B10 /* MotionClass2 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C5602DCC2F92E84000C74B10 /* Resources */ = {
+		C5602E0A2F95DB5F00C74B10 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -128,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C5602DCA2F92E84000C74B10 /* Sources */ = {
+		C5602E082F95DB5F00C74B10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C5602DD72F92E84200C74B10 /* Debug */ = {
+		C5602E152F95DB6100C74B10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -201,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		C5602DD82F92E84200C74B10 /* Release */ = {
+		C5602E162F95DB6100C74B10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -257,7 +244,7 @@
 			};
 			name = Release;
 		};
-		C5602DDA2F92E84200C74B10 /* Debug */ = {
+		C5602E182F95DB6100C74B10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -266,10 +253,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LocationCohort6/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "\"We need your location always\" ";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"We need access your location\" ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -280,7 +263,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Quikees.LocationCohort6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Quikees.MotionClass2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -292,7 +275,7 @@
 			};
 			name = Debug;
 		};
-		C5602DDB2F92E84200C74B10 /* Release */ = {
+		C5602E192F95DB6100C74B10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -301,10 +284,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LocationCohort6/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "\"We need your location always\" ";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"We need access your location\" ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -315,7 +294,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Quikees.LocationCohort6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Quikees.MotionClass2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -330,25 +309,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C5602DC92F92E84000C74B10 /* Build configuration list for PBXProject "LocationCohort6" */ = {
+		C5602E072F95DB5F00C74B10 /* Build configuration list for PBXProject "MotionClass2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C5602DD72F92E84200C74B10 /* Debug */,
-				C5602DD82F92E84200C74B10 /* Release */,
+				C5602E152F95DB6100C74B10 /* Debug */,
+				C5602E162F95DB6100C74B10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C5602DD92F92E84200C74B10 /* Build configuration list for PBXNativeTarget "LocationCohort6" */ = {
+		C5602E172F95DB6100C74B10 /* Build configuration list for PBXNativeTarget "MotionClass2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C5602DDA2F92E84200C74B10 /* Debug */,
-				C5602DDB2F92E84200C74B10 /* Release */,
+				C5602E182F95DB6100C74B10 /* Debug */,
+				C5602E192F95DB6100C74B10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C5602DC62F92E84000C74B10 /* Project object */;
+	rootObject = C5602E042F95DB5F00C74B10 /* Project object */;
 }
