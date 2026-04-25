@@ -19,8 +19,6 @@ struct ContentView: View {
                 LoadingView()
             }else if viewModel.viewState == .ready {
                 LocationReadyView(
-                    latitudeText: viewModel.latText,
-                    longitudeText: viewModel.lonText,
                     onRefresh: viewModel.refresh,
                     onSave: viewModel.saveCheckIn)
             }

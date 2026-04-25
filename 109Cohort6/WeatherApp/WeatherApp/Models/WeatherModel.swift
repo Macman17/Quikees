@@ -38,3 +38,5 @@ struct CurrentWeather: Codable {
     let time: String
     
 }
+
+

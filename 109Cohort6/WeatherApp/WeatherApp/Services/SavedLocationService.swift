@@ -5,78 +5,37 @@
 //  Created by Naqui Darby on 4/17/26.
 //
 import Foundation
-import CoreLocation
 import Combine
+import SwiftData
 
-class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate {
- 
-    private let manager: CLLocationManager = CLLocationManager()
-    
-    @Published var location: CLLocationCoordinate2D?
-    
-    @Published var isLoading: Bool = true
-    
-    @Published var authStatus: CLAuthorizationStatus = .notDetermined
-    
-    override init(){
-        
-        super.init()
-        
-        manager.delegate = self
-        
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        authStatus = manager.authorizationStatus
-        
-        
+
+class SavedLocationService: ObservableObject {
+    enum CodingKeys: String, CodingKey {
+        case id, name, latitude, longitude
+        case invalidURL
         
     }
     
-    func requestLocation(){
+    @Published var savedLocations: [SavedLocations] = []
+    
+    
+    func savedLocation(_ location: SavedLocations) {
+        savedLocations.append(location)
         
-        isLoading = true
-        manager.requestLocation()
     }
     
-    func requestLocationPermission(){
-        
-        authStatus = manager.authorizationStatus
-        
-        if authStatus == .notDetermined {
-            manager.requestWhenInUseAuthorization( )
-            return
+    func deleteSavedLocation(_ location: SavedLocations) {
+        var savedLocationsCopy = savedLocations
+        savedLocationsCopy.removeAll { $0.id == location.id }
+        savedLocations = savedLocationsCopy
+    }
+    
+    func updateSavedLocation(_ location: SavedLocations) {
+        var savedLocationsCopy = savedLocations
+        if let index = savedLocationsCopy.firstIndex(of: location) {
+            savedLocationsCopy[index] = location
         }
-        
-        if authStatus == .authorizedWhenInUse {
-            requestLocation()
-            return
-        }
-        
-        func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-            
-            authStatus = manager.authorizationStatus
-            
-            
-            if authStatus == .authorizedWhenInUse || authStatus == .authorizedAlways {
-                requestLocation()
-            }else {
-                isLoading = false
-            }
-        }
-            func locationManager(_ manager: CLLocationManager, didUpdateLocations location: [CLLocation]){
-                
-                if let lastLocation = location.last{
-                    let location = lastLocation.coordinate
-                }
-                
-                isLoading = false
-            }
-         func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-            
-            isLoading = false
-        }
-            
-        
+        savedLocations = savedLocationsCopy
     }
 }
 

@@ -67,13 +67,13 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate {
             func locationManager(_ manager: CLLocationManager, didUpdateLocations location: [CLLocation]){
                 
                 if let lastLocation = location.last{
-                    let location = lastLocation.coordinate
+                    _ = lastLocation.coordinate
                 }
                 
                 isLoading = false
             }
          func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-            
+            print("Failed to find user's location: \(error.localizedDescription)")
             isLoading = false
         }
             

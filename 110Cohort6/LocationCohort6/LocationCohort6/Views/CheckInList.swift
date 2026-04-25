@@ -8,28 +8,29 @@
 import SwiftUI
 
 struct CheckInList: View {
-    let checkIns: [LocationModel]
+    @StateObject private var checkIns: LocationViewModel =
+    LocationViewModel()
     let onClearAll: () -> Void
     
+    
     var body: some View {
-        VStack{
+        NavigationStack{
             VStack{
                 Text("Check-ins")
                     .font(.headline)
                 Button("Clear All"){
                     self.onClearAll()
-                }.disabled(checkIns.count == 0)
+                }
                 
-                if checkIns.count == 0 {
-                    Text("No check-ins yet")
-                }else {
-                    List(checkIns){ item in
-                        VStack{
+                List(checkIns.checkIn){ item in
+                    NavigationLink(destination: CheckinDetailsView(viewModel: LocationViewModel())){
                             Text(item.timestamp,style: .time)
                             Text(item.timestamp,style: .date)
                             
                             Text("Lat: \(item.latitude)")
                             Text("Long: \(item.longitude)")
+                        Text(verbatim: "Distance",\(item.distance ))
+                            
                         }
                         
                     }
@@ -37,4 +38,6 @@ struct CheckInList: View {
             }
         }
     }
-}
+
+
+

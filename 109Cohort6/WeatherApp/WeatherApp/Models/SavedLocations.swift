@@ -1,10 +1,21 @@
 //
+//  SavedLocations.swift
+//  WeatherApp
+//
+//  Created by Naqui Darby on 4/24/26.
+//
+
+
+//
 import Foundation
 import SwiftData
 import UIKit
+import Combine
 
 
-struct SavedLocations: Codable, Identifiable, Equatable {
+class FavoriteLocations: ObservableObject {
+   
+    
     var id: UUID
     var name: String
     var latitude: Double

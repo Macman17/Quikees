@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import SwiftData
 import Combine
 
 enum LocationViewState {
@@ -20,10 +21,12 @@ enum LocationViewState {
 class LocationViewModel: ObservableObject {
     @Published var viewState: LocationViewState = .needsPermission
 
-
+  
     @Published var latText: String = "__"
     @Published var lonText: String = "__"
     @Published var errorMessage: String = ""
+    @Published var currentLocations: CLLocationCoordinate2D? = nil
+    
     @Published var checkIn: [LocationModel] = []
     
     private let service: LocationService = LocationService()
@@ -82,7 +85,8 @@ class LocationViewModel: ObservableObject {
             id: UUID(),
             longitude: coordinate.longitude,
             latitude: coordinate.latitude,
-            timestamp: Date())
+            timestamp: Date(),
+            distane: CLLocationDistance())
         
         self.checkIn.insert(newCoord, at: 0)
     }
@@ -101,5 +105,50 @@ class LocationViewModel: ObservableObject {
         self.errorMessage = ""
         self.viewState = .loading
         self.service.requestLocationPermission()
+    }
+    func saveOn(lat: String, lon: String){
+        
+        let coordinate = self.destinationLocation(lat: lat, lon: lon)!
+        let newCoord = LocationModel(
+            id: UUID(),
+            longitude: coordinate.self.0,
+            latitude: coordinate.self.1,
+            timestamp: Date(),
+        distane: CLLocationDistance())
+        
+        self.checkIn.insert(newCoord, at: 0)
+    }
+    
+    func currentLocation() -> CLLocationCoordinate2D? {
+       
+        
+        let coordinate = self.service.location!
+        let newCoord = LocationModel(
+            id: UUID(),
+            longitude: coordinate.longitude,
+            latitude: coordinate.latitude,
+            timestamp: Date())
+        
+        self.checkIn.insert(newCoord, at: 0)
+        return coordinate
+    }
+    
+    func destinationLocation(lat: String, lon: String) -> CLLocationCoordinate2D? {
+        let latValue = Double(lat) ?? 0
+        let lonValue = Double(lon) ?? 0
+        return CLLocationCoordinate2D(latitude: latValue, longitude: lonValue)
+    }
+    
+    func distanceBetweenLocations(lat1: String, lon1: String, lat2: String, lon2: String) -> String {
+        
+        let startCoordinate = self.currentLocation
+        let endCoordinate = self.destinationLocation(lat: lat2, lon: lon2)
+        let distanceBetween = CLLocation(latitude: startCoordinate()!.latitude, longitude: startCoordinate()!.longitude).distance(from: CLLocation(latitude: endCoordinate!.latitude, longitude: endCoordinate!.longitude))
+        let result = Measurement(value: distanceBetween, unit: UnitLength.meters).converted(to: .miles)
+        
+        return "\(result) miles"
+        
+
+        
     }
 }

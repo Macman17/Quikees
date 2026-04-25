@@ -14,11 +14,14 @@ struct LocationModel: Identifiable {
     let longitude: Double
     let latitude: Double
     let timestamp: Date
+    let distance: Double
     
-    init(id: UUID, longitude: Double, latitude: Double, timestamp: Date) {
+    
+    init(id: UUID, longitude: Double, latitude: Double, timestamp: Date, distane: Double ) {
         self.id = id
         self.longitude = longitude
         self.latitude = latitude
         self.timestamp = timestamp
+        self.distance = distane
     }
 }

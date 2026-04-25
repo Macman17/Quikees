@@ -8,27 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = HealthViewModel()
+    
+    @StateObject private var viewModel: HealthViewModel = HealthViewModel()
     
     var body: some View {
-        VStack {
-           HealthViewModel()
-            StepCardView(steps: viewModel.distance)
-            
-            DistanceCardView(distance: viewModel.distance)
-            
-            ActivityStatusCard(
-                activityStatus: viewModel.requestAuth,
-                viewModel.authorizationStatus,
-                isAuthorized: viewModel.isAuthorized
-            )
-            Spacer()
+        NavigationView{
+            ScrollView{
+                VStack(spacing: 20){
+                    HeaderSectionView()
+                    StepCardView(steps: viewModel.steps)
+                    DistanceCardView(distance: viewModel.distance)
+                    ActivityStatusCard(activityStatus: viewModel.activityStatus, authStatus: viewModel.authStatus, isAuthorized: viewModel.isAuthorized)
+                    Spacer()
+                    
+                }
+                .padding()
+            }.navigationTitle("Health Tracker")
+                .onAppear{
+                    viewModel.requestAuthorization()
+                }
+                .refreshable {
+                    viewModel.fetchTodaySteps()
+                    viewModel.fetchTodayDistance()
+                }
         }
-        .navigationTitle("Health Tracker")
-        .padding()
-        .onAppear{
-            viewModel.requestAuth()
-        }
+        
+        
     }
 }
 
