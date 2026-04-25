@@ -17,6 +17,19 @@ class SavedLocationViewModel: ObservableObject {
     @Published var notes: String = ""
     @Published var createdAt: Date = Date()
     
+    private let savedLocation: LocationService = LocationService()
+    
+    func saveLocation() {
+        self.name = name
+        self.latitude = latitude
+        self.longitude = longitude
+        self.baselineTemp = baselineTemp
+        self.notes = notes
+        self.createdAt = createdAt
+        
+        savedLocation.save(: name, latitude: latitude, longitude: longitude, baselineTemp: baselineTemp, notes: notes, createdAt: createdAt)
+    }
+    
     
     
     
