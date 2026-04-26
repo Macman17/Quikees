@@ -17,6 +17,7 @@ struct StepCardView:View {
                 Image(systemName: "figure.walk.circle.fill")
                     .font(.title2)
                     .foregroundColor(Color.green)
+                    
                 
                 Text("Steps Today").font(.headline)
                 
@@ -37,8 +38,9 @@ struct StepCardView:View {
                 .tint(.green)
             
             Text("Goal \(goal.formatted()) steps")
-                .font(.caption)
+                .font(.caption).bold()
                 .foregroundColor(Color(.gray))
+                
         }
         .padding()
         .background(Color(.systemGray6))
