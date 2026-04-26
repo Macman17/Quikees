@@ -37,6 +37,7 @@ struct LocationReadyView: View {
                         .labelStyle(.titleAndIcon)
                         .cornerRadius(10)
                         .foregroundColor(.white)
+                        .buttonSizing(ButtonSizing.flexible)
                         
                         
                         
@@ -45,13 +46,16 @@ struct LocationReadyView: View {
                         
                         
                         HStack{
-                            Button("Refresh"){
+                            Button("  Refresh  "){
                                 self.onRefresh()
                             }.buttonStyle(.borderedProminent)
+                                .buttonSizing(ButtonSizing.flexible)
+                                Spacer()
                             Button("Save Check-in"){
                                 self.onSave()
                                 
                             }.buttonStyle(.borderedProminent)
+                                .buttonSizing(ButtonSizing.flexible)
                         }
                         
                     }

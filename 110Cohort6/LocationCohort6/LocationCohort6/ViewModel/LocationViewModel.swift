@@ -26,6 +26,9 @@ class LocationViewModel: ObservableObject {
     @Published var lonText: String = "__"
     @Published var errorMessage: String = ""
     @Published var currentLocations: CLLocationCoordinate2D? = nil
+    @Published var destination: CLLocationCoordinate2D? = nil
+    @Published var distance: String = CLLocationDistance().description
+
     
     @Published var checkIn: [LocationModel] = []
     
@@ -106,18 +109,7 @@ class LocationViewModel: ObservableObject {
         self.viewState = .loading
         self.service.requestLocationPermission()
     }
-    func saveOn(lat: String, lon: String){
-        
-        let coordinate = self.destinationLocation(lat: lat, lon: lon)!
-        let newCoord = LocationModel(
-            id: UUID(),
-            longitude: coordinate.self.0,
-            latitude: coordinate.self.1,
-            timestamp: Date(),
-        distane: CLLocationDistance())
-        
-        self.checkIn.insert(newCoord, at: 0)
-    }
+    
     
     func currentLocation() -> CLLocationCoordinate2D? {
        
@@ -127,7 +119,7 @@ class LocationViewModel: ObservableObject {
             id: UUID(),
             longitude: coordinate.longitude,
             latitude: coordinate.latitude,
-            timestamp: Date())
+            timestamp: Date(), distane: CLLocationDistance())
         
         self.checkIn.insert(newCoord, at: 0)
         return coordinate
@@ -147,7 +139,6 @@ class LocationViewModel: ObservableObject {
         let result = Measurement(value: distanceBetween, unit: UnitLength.meters).converted(to: .miles)
         
         return "\(result) miles"
-        
 
         
     }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CheckInList: View {
+    @EnvironmentObject var locationViewModel: LocationViewModel
     @StateObject private var checkIns: LocationViewModel =
     LocationViewModel()
     let onClearAll: () -> Void
@@ -23,21 +24,31 @@ struct CheckInList: View {
                 }
                 
                 List(checkIns.checkIn){ item in
-                    NavigationLink(destination: CheckinDetailsView(viewModel: LocationViewModel())){
+                   
+                    if checkIns.currentLocations == nil {
+                        EmptyView()
+                           .onAppear{
+                               Text("No Check-ins yet")
+                               Image(systemName: "location.fill")
+                           }
+                    } else{
+                        NavigationLink(destination: CheckinDetailsView(viewModel: LocationViewModel())){
                             Text(item.timestamp,style: .time)
                             Text(item.timestamp,style: .date)
                             
                             Text("Lat: \(item.latitude)")
                             Text("Long: \(item.longitude)")
-                        Text(verbatim: "Distance",\(item.distance ))
+                            Text(verbatim: "\(item.distance)")
                             
                         }
+                    }
                         
                     }
                 }
             }
         }
     }
+
 
 
 
