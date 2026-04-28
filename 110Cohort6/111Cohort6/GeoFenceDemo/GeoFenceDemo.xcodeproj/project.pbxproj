@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		C595F4302F9EB35300AB9A0A /* VideoCameraApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoCameraApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C595F4602FA0611500AB9A0A /* GeoFenceDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoFenceDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C595F4322F9EB35300AB9A0A /* VideoCameraApp */ = {
+		C595F4622FA0611500AB9A0A /* GeoFenceDemo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = VideoCameraApp;
+			path = GeoFenceDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C595F42D2F9EB35300AB9A0A /* Frameworks */ = {
+		C595F45D2FA0611500AB9A0A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C595F4272F9EB35300AB9A0A = {
+		C595F4572FA0611500AB9A0A = {
 			isa = PBXGroup;
 			children = (
-				C595F4322F9EB35300AB9A0A /* VideoCameraApp */,
-				C595F4312F9EB35300AB9A0A /* Products */,
+				C595F4622FA0611500AB9A0A /* GeoFenceDemo */,
+				C595F4612FA0611500AB9A0A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C595F4312F9EB35300AB9A0A /* Products */ = {
+		C595F4612FA0611500AB9A0A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C595F4302F9EB35300AB9A0A /* VideoCameraApp.app */,
+				C595F4602FA0611500AB9A0A /* GeoFenceDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C595F42F2F9EB35300AB9A0A /* VideoCameraApp */ = {
+		C595F45F2FA0611500AB9A0A /* GeoFenceDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C595F43B2F9EB35500AB9A0A /* Build configuration list for PBXNativeTarget "VideoCameraApp" */;
+			buildConfigurationList = C595F46B2FA0611700AB9A0A /* Build configuration list for PBXNativeTarget "GeoFenceDemo" */;
 			buildPhases = (
-				C595F42C2F9EB35300AB9A0A /* Sources */,
-				C595F42D2F9EB35300AB9A0A /* Frameworks */,
-				C595F42E2F9EB35300AB9A0A /* Resources */,
+				C595F45C2FA0611500AB9A0A /* Sources */,
+				C595F45D2FA0611500AB9A0A /* Frameworks */,
+				C595F45E2FA0611500AB9A0A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				C595F4322F9EB35300AB9A0A /* VideoCameraApp */,
+				C595F4622FA0611500AB9A0A /* GeoFenceDemo */,
 			);
-			name = VideoCameraApp;
+			name = GeoFenceDemo;
 			packageProductDependencies = (
 			);
-			productName = VideoCameraApp;
-			productReference = C595F4302F9EB35300AB9A0A /* VideoCameraApp.app */;
+			productName = GeoFenceDemo;
+			productReference = C595F4602FA0611500AB9A0A /* GeoFenceDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C595F4282F9EB35300AB9A0A /* Project object */ = {
+		C595F4582FA0611500AB9A0A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
-					C595F42F2F9EB35300AB9A0A = {
+					C595F45F2FA0611500AB9A0A = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
 			};
-			buildConfigurationList = C595F42B2F9EB35300AB9A0A /* Build configuration list for PBXProject "VideoCameraApp" */;
+			buildConfigurationList = C595F45B2FA0611500AB9A0A /* Build configuration list for PBXProject "GeoFenceDemo" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = C595F4272F9EB35300AB9A0A;
+			mainGroup = C595F4572FA0611500AB9A0A;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = C595F4312F9EB35300AB9A0A /* Products */;
+			productRefGroup = C595F4612FA0611500AB9A0A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C595F42F2F9EB35300AB9A0A /* VideoCameraApp */,
+				C595F45F2FA0611500AB9A0A /* GeoFenceDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C595F42E2F9EB35300AB9A0A /* Resources */ = {
+		C595F45E2FA0611500AB9A0A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C595F42C2F9EB35300AB9A0A /* Sources */ = {
+		C595F45C2FA0611500AB9A0A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C595F4392F9EB35500AB9A0A /* Debug */ = {
+		C595F4692FA0611700AB9A0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -188,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		C595F43A2F9EB35500AB9A0A /* Release */ = {
+		C595F46A2FA0611700AB9A0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -244,17 +244,15 @@
 			};
 			name = Release;
 		};
-		C595F43C2F9EB35500AB9A0A /* Debug */ = {
+		C595F46C2FA0611700AB9A0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 38L798BTK6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -265,7 +263,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Quikees.VideoCameraApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Quikees.GeoFenceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -277,7 +275,7 @@
 			};
 			name = Debug;
 		};
-		C595F43D2F9EB35500AB9A0A /* Release */ = {
+		C595F46D2FA0611700AB9A0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -286,7 +284,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -297,7 +294,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Quikees.VideoCameraApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Quikees.GeoFenceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -312,25 +309,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C595F42B2F9EB35300AB9A0A /* Build configuration list for PBXProject "VideoCameraApp" */ = {
+		C595F45B2FA0611500AB9A0A /* Build configuration list for PBXProject "GeoFenceDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C595F4392F9EB35500AB9A0A /* Debug */,
-				C595F43A2F9EB35500AB9A0A /* Release */,
+				C595F4692FA0611700AB9A0A /* Debug */,
+				C595F46A2FA0611700AB9A0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C595F43B2F9EB35500AB9A0A /* Build configuration list for PBXNativeTarget "VideoCameraApp" */ = {
+		C595F46B2FA0611700AB9A0A /* Build configuration list for PBXNativeTarget "GeoFenceDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C595F43C2F9EB35500AB9A0A /* Debug */,
-				C595F43D2F9EB35500AB9A0A /* Release */,
+				C595F46C2FA0611700AB9A0A /* Debug */,
+				C595F46D2FA0611700AB9A0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C595F4282F9EB35300AB9A0A /* Project object */;
+	rootObject = C595F4582FA0611500AB9A0A /* Project object */;
 }
