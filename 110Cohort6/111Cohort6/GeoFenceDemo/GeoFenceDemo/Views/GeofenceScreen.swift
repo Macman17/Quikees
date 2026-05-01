@@ -6,13 +6,6 @@
 //
 
 
-//
-//  GeofenceScreen.swift
-//  GeoFenceDemo
-//
-//  Created by Arturo Martinez on 2/6/26.
-//
-
 
 import SwiftUI
 
@@ -21,6 +14,7 @@ struct GeofenceScreen: View {
 
     var body: some View {
         VStack(spacing: 12) {
+            
             Text("GeoFence Reminder")
                 .font(.title2).bold()
 
@@ -28,17 +22,21 @@ struct GeofenceScreen: View {
             Text(vm.lastEventText)
                 .font(.footnote)
 
-            HStack {
-                Button("Request Permissions") { vm.requestPermissions() }
-                Button("Start") { vm.startGeofence() }
-                Button("Stop") { vm.stopGeofence() }
-                
+            VStack {
+                VStack{
+                    Button("Request Permissions") { vm.requestPermissions() }
+                }.buttonSizing(ButtonSizing.flexible)
+                    .buttonStyle(.borderedProminent)
+                HStack{
+                    Button("Start") { vm.startGeofence() }
+                    Button("Stop") { vm.stopGeofence() }
+                    
+                } .buttonSizing(ButtonSizing.flexible)
+                    .buttonStyle(.borderedProminent)
             }
-            .buttonStyle(.borderedProminent)
-
             Button("Clear Log") { vm.clearLog() }
                 .buttonStyle(.bordered)
-
+                .buttonSizing(ButtonSizing.flexible)
             
             List(vm.events) { event in
                 VStack(alignment: .leading) {

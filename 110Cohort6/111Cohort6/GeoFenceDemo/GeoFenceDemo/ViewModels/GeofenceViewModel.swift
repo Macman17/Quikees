@@ -2,21 +2,24 @@
 //  GeofenceViewModel.swift
 //  GeoFenceDemo
 //
-//  Created by Arturo Martinez on 2/6/26.
+//  Created by Naqui Darby on 4/27/26.
 //
 
 import Foundation
 import CoreLocation
 import Combine
+import UserNotifications
 
 class GeofenceViewModel: ObservableObject{
     
     @Published var statusText : String = "Not started"
     @Published var lastEventText :  String = "No events yet"
     @Published var events: [GeofenceModel] = []
+    @Published var zones: [ZoneEvent] = []
     
     // Geofence instance
     private let service: GeofenceService
+    
     
     // "Event Listener" -> Publisher
     private var cancellables = Set<AnyCancellable>()
@@ -76,6 +79,37 @@ class GeofenceViewModel: ObservableObject{
     func clearLog() {
          events.removeAll()
      }
+    
+    private func setupCallback() {
+           service.onEventTriggered = { [weak self] zoneId, eventType in
+               guard let self = self else { return }
+               if let zone = self.zones.first(where: { $0.id.uuidString == zoneId }) {
+                   let newEvent = GeofenceService
+                   
+                   DispatchQueue.main.async {
+                       self.events.insert(GeofenceModel(Name: "", date: Date(), latitude: 0.0, longitude: 0.0, message: ""), at: 0) // Newest first
+                       self.sendLocalNotification(for: ZoneEvent)
+                   }
+               }
+           }
+       }
+       
+    func addZone(name: String, lat: Double, lon: Double, date: Date, message: String ) {
+        let newZone = GeofenceModel(id: UUID(), Name: name, date: Date(), latitude: lon, longitude: lon, message: message )
+        zones.append(ZoneEvent(id: UUID(), zoneName: name, eventType: "", timeStamp: Date()  ))
+       }
+    
+       
+       private func sendLocalNotification(for event: ZoneEvent) {
+           let content = UNMutableNotificationContent()
+           content.title = "Zone Alert: \(event.zoneName)"
+           content.body = "You just \(event.eventType.lowercased()) this zone."
+           content.sound = .default
+           
+           let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+           UNUserNotificationCenter.current().add(request)
+       }
+       
     
     
 }
