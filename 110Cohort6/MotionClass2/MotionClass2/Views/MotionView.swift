@@ -47,7 +47,7 @@ struct MotionView:View {
                           Text("Z: " + String(format: "%.4f", viewModel.accelZ))
                       }
             
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 10) {
                             Text("Gyroscope")
                                 .font(.headline)
 
