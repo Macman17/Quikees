@@ -1,3 +1,11 @@
+//
+//  HeartRateCardView.swift
+//  HealthTracker
+//
+//  Created by Naqui Darby on 5/9/26.
+//
+
+
 import SwiftUI
 
 struct HeartRateCardView: View {

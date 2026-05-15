@@ -9,6 +9,8 @@ import SwiftUI
 struct MainDashboardView: View {
     @ObservedObject var viewModel: HealtTrackerViewModel
     
+    let currentActivity: ActivityType?
+
     var body: some View  {
         ScrollView {
             VStack(spacing: 16) {
@@ -17,6 +19,7 @@ struct MainDashboardView: View {
                     .foregroundColor(.gray)
             }
             
+            // Rings Section
             HStack(spacing: 20) {
                 VStack(spacing: 6) {
                     // Water Ring,
@@ -56,6 +59,7 @@ struct MainDashboardView: View {
                 }
             }
             
+            // Quick Action Buttons
             HStack(spacing: 12) {
                 NavigationLink(destination: AddEntryView(viewModel: viewModel, entryType: .water)) {
                     QuickAddButton(
@@ -76,6 +80,7 @@ struct MainDashboardView: View {
                 .buttonStyle(PlainButtonStyle())
             }
             
+            // Settings button
             NavigationLink(destination: GoalsSettingsView(viewModel: viewModel)) {
                 HStack {
                     Image(systemName: "gearshape.fill")
@@ -86,11 +91,44 @@ struct MainDashboardView: View {
             }
             .buttonStyle(PlainButtonStyle())
             .padding(.top, 4)
+            
+            // Heart Rate Card Section
+            HeartRateCardView(viewModel: viewModel)
+                .padding(.top, 8)
         }
+        .overlay() {
+            if viewModel.showMotivationalQuote {
+                ZStack {
+                    Color.black.opacity(0.85)
+                        .ignoresSafeArea()
+                    
+                    VStack(spacing: 12) {
+                        Image(systemName: "quote.opening")
+                            .font(.title3)
+                            .foregroundColor(.yellow)
+                        
+                        Text(viewModel.currentQuote?.quote ?? "")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(4)
+                        
+                        Text("-- \(viewModel.currentQuote?.author ?? "")")
+                            .font(.system(size: 11, weight: .medium))
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.horizontal, 12)
+                }
+            }
+        }
+        .onAppear {
+            // Refresh data when view appears
+            viewModel.refreshTodaysData()
+        }
+ 
     }
 }
 
 #Preview {
-    MainDashboardView(viewModel: HealtTrackerViewModel())
+    MainDashboardView(viewModel: HealtTrackerViewModel(), currentActivity: .automotive)
 }
-

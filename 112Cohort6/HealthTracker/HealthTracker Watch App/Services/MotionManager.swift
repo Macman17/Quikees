@@ -1,3 +1,11 @@
+//
+//  MotionManager.swift
+//  HealthTracker
+//
+//  Created by Naqui Darby on 5/9/26.
+//
+
+
 import CoreMotion
 import Foundation
 import Combine

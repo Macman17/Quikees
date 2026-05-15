@@ -1,3 +1,11 @@
+//
+//  HeartRateSample.swift
+//  HealthTracker
+//
+//  Created by Naqui Darby on 5/5/26.
+//
+
+
 import Foundation
 import Combine
 
@@ -6,7 +14,13 @@ struct HeartRateSample: Identifiable {
     let bpm: Double
     let timestamp: Date
     
-    var formattedBPM: String  {
-        "\(Int(bpm)) BPMs"
+    var formattedBPM: String {
+        "\(Int(bpm))"
+    }
+    
+    var formattedTime: String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        return formatter.string(from: timestamp)
     }
 }

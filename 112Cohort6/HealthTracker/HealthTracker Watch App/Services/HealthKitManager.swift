@@ -1,118 +1,177 @@
+//
+//  HealthKitManager.swift
+//  HealthTracker
+//
+//  Created by Naqui Darby on 5/5/26.
+//
+
+
 import Foundation
 import Combine
 import HealthKit
 
 class HealthKitManager {
-    // MARK: - Propierties
+    // MARK: - Singleton
     static let shared = HealthKitManager()
     private init() {}
     
-    
     let healthStore = HKHealthStore()
-    let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
-    let heartRateUnit = HKUnit(from: "count/min") // <- BPMs
     
+    // MARK: - Error TRackers
+    private var heartRateErrors = ""
+    
+    // MARK: - HealthKit Types
+    private let caloriesType = HKQuantityType.quantityType(forIdentifier: .dietaryEnergyConsumed)!
+    private let waterType = HKQuantityType.quantityType(forIdentifier: .dietaryWater)!
+    private let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
+    
+    // MARK: - Units
+    private let caloriesUnit = HKUnit.kilocalorie()
+    private let waterUnit = HKUnit.literUnit(with: .milli)
+    private let heartRateUnit = HKUnit(from: "count/min") // BPM
+    
+    // MARK: - Query
     private var heartRateQuery: HKAnchoredObjectQuery?
     
-    // MARK: - Computed Properties
+    // MARK: - Computed Props
     var isHealthDataAvailable: Bool {
         HKHealthStore.isHealthDataAvailable()
     }
     
-    // MARK: - Authorization
-    func requestAuthorization() async throws {
-        let typesToRead: Set<HKObjectType> = [heartRateType]
-        
-        // We're only reading not writing so this arr stays empty
-        let typesToWrite: Set<HKSampleType> = []
+    // MARK: - Methods Section (Auth)
+    func requestAuth() async throws {
+        let typesToRead: Set<HKObjectType> = [caloriesType, waterType, heartRateType]
+        let typesToWrite: Set<HKSampleType> = [caloriesType, waterType]
         
         try await healthStore.requestAuthorization(toShare: typesToWrite, read: typesToRead)
     }
     
-    func checkAuthorizationStatus() -> HKAuthorizationStatus {
+    func checkAuthStatus(for type: EntryType) -> Bool {
+        let caloriesAuthStatus: HKAuthorizationStatus = healthStore.authorizationStatus(for: caloriesType)
+        let waterAuthStatus = healthStore.authorizationStatus(for: waterType)
+        
+        return caloriesAuthStatus == .sharingAuthorized && waterAuthStatus == .sharingAuthorized
+    }
+    
+    func checkHearthRateAuthorizationStatus () -> HKAuthorizationStatus {
         healthStore.authorizationStatus(for: heartRateType)
     }
     
-    func fetchLatestHeartRateMeasure() async throws -> HeartRateSample? {
+    
+    // MARK: - Methods Section (Water Calories)
+    func getTodaysTotal(for type: EntryType) async throws -> Double {
+        let hkType = type == .calories ? caloriesType : waterType
+        let unit = type == .calories ? caloriesUnit : waterUnit
+        
+        let calendar = Calendar.current
+        let now = Date()
+        let startOfDay = calendar.startOfDay(for: now)
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)
+        
+        print("Fetching today's \(type.displayName) from HealthKit...")
+        print("Time range: \(startOfDay) to \(endOfDay ?? now)")
+        
+        let predicate = HKQuery.predicateForSamples(
+            withStart: startOfDay, end: endOfDay, options: .strictStartDate
+        )
+        
         return try await withCheckedThrowingContinuation { continuation in
-            let sortDescriptor = NSSortDescriptor(
-                key: HKSampleSortIdentifierStartDate,
-                ascending: true
-            )
-
-            let query = HKSampleQuery(
-                sampleType: heartRateType,
-                predicate: nil,
-                limit: 1,
-                sortDescriptors: [sortDescriptor]
+            let query = HKStatisticsQuery(
+                quantityType: hkType,
+                quantitySamplePredicate: predicate,
+                options: .cumulativeSum
             ) { _, samples, error in
                 if let error = error {
+                    print("Error fetching \(type.displayName): \(error)")
                     continuation.resume(throwing: error)
                     return
                 }
-
-                guard let sample = samples?.first as? HKQuantitySample else {
-                    continuation.resume(returning: nil)
-                    return
-                }
-
-                let bpm = sample.quantity.doubleValue(for: self.heartRateUnit)
-                let heartRateSample = HeartRateSample(
-                    bpm: bpm,
-                    timestamp: sample.startDate
-                )
-                continuation.resume(returning: heartRateSample)
+                
+                let sum = samples?.sumQuantity()?.doubleValue(for: unit) ?? 0.0
+                print("Fetched \(sum) \(type.displayName) from HealthKit")
+                continuation.resume(returning: sum)
             }
-
+            
             healthStore.execute(query)
         }
     }
     
-    func startHeartRateMonitoring(onUpdate: @escaping ([HeartRateSample]) -> Void) {
-        stopHeartRateMonitoring()
-
-        let query = HKAnchoredObjectQuery(
-            type: heartRateType,
-            predicate: nil,
-            anchor: nil,
-            limit: HKObjectQueryNoLimit
-        ) { [weak self] query, samples, deletedObjects, anchor, error in
-            guard let self = self else { return }
-            self.processHeartRateSample(samples, onUpdate: onUpdate)
-        }
+    func addEntry(_ entry: DiaryEntry) async throws {
+        let hkType = entry.type == .calories ? caloriesType : waterType
+        let unit = entry.type == .calories ? caloriesUnit : waterUnit
         
-        query.updateHandler = { [weak self] query, samples, deletedObjects, anchor, error in
-            guard let self = self else { return }
-            self.processHeartRateSample(samples, onUpdate: onUpdate)
-        }
-
-        heartRateQuery = query
-        healthStore.execute(query)
+        print("Adding \(entry.value) \(entry.type.displayName) to HealthKit...")
+        
+        let quantity = HKQuantity(unit: unit, doubleValue: entry.value)
+        let sample = HKQuantitySample(
+            type: hkType,
+            quantity: quantity,
+            start: entry.timestamp,
+            end: entry.timestamp
+        )
+        
+        try await healthStore.save(sample)
+        print("Saved to HealthKit successfully")
     }
     
-    func stopHeartRateMonitoring() {
-        if let query = heartRateQuery {
-            healthStore.stop(query)
-            heartRateQuery = nil
-        }
-    }
+    // MARK: - Hearth Rate Methods
     
-    func processHeartRateSample(_ samples: [HKSample]?, onUpdate: @escaping ([HeartRateSample]) -> Void) {
-        guard let quantitySamples = samples as? [HKQuantitySample], !quantitySamples.isEmpty else {
-            return
+    // This func transforms HKSample coming from HKStore to the
+    // custome heart rate sample model that our app will use for
+    // simplicity
+    func processHeartRateSamples(samples: [HKSample]?, onUpdate: @escaping ([HeartRateSample]) -> Void) {
+        guard let quantitySamples = samples as? [HKQuantitySample], !quantitySamples.isEmpty else { return }
+        
+        let heartRateSamples: [HeartRateSample] = quantitySamples.map { sample in
+                HeartRateSample(
+                    bpm: sample.quantity.doubleValue(for: heartRateUnit),
+                    timestamp: sample.startDate)
         }
         
-        let heartRateSamples = quantitySamples.map { sample in
-            HeartRateSample(
-                bpm: sample.quantity.doubleValue(for: heartRateUnit),
-                timestamp: sample.startDate
-            )
-        }
-        
-        // Call update handler on main thread
         DispatchQueue.main.async {
             onUpdate(heartRateSamples)
         }
     }
     
+    func startHearthRateMonitoring(onUpdate: @escaping ([HeartRateSample]) -> Void) {
+        stopHearthRateMonitoring()
+        
+        let query = HKAnchoredObjectQuery(
+            type: heartRateType,
+            predicate: nil, // No predicate means give me all available data
+            anchor: nil, // A anchor obj that can set certain conditions to close the connection
+            limit: HKObjectQueryNoLimit
+        ) { [weak self] query, samples, deletedObjects, anchor, error in
+            guard let self = self,
+                  let _ = error else {
+                self?.heartRateErrors = "Something wrong happened while getting heart Rate Data"
+                return
+            }
+            self.processHeartRateSamples(samples: samples, onUpdate: onUpdate)
+        }
+        
+        query.updateHandler = { [weak self] query, samples, deletedObjects, anchor, error in
+            guard let self = self,
+                  let _ = error else {
+                self?.heartRateErrors = "Something wrong happened while getting heart Rate Data"
+                return
+            }
+            self.processHeartRateSamples(samples: samples, onUpdate: onUpdate)
+        }
+        
+        
+        self.heartRateQuery = query
+        healthStore.execute(query)
+    }
+    
+    // startHearthRateMonitoring() { heartRateSamples in
+    //     -- you process the samples in here
+    // }
+
+    func stopHearthRateMonitoring() {
+        if let query = self.heartRateQuery {
+            healthStore.stop(query)
+            heartRateQuery = nil
+        }
+    }
 }

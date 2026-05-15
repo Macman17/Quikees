@@ -1,3 +1,11 @@
+//
+//  MotivationalQuoteService.swift
+//  HealthTracker
+//
+//  Created by Naqui Darby on 5/9/26.
+//
+
+
 import Foundation
 import Combine
 
